@@ -3,6 +3,8 @@ project xxx {
     description: "Modulo responsável pela autenticação, autorização e rastreio do usuário no sistema"
     startDate: 2022-11-22
     dueDate: 2022-11-30
+    startDate: 2022-11-22
+    dueDate: 2022-11-30
 }
 
 team blackops {
@@ -28,6 +30,7 @@ roadmap projeto {
             description: "Estudo para entender as tecnologias"
             item : Spike.epic1
             status: IN_DEVELOPMENT
+            dueDate: 2024-11-30
             dueDate: 2024-11-30
             version: "1.0"
         }
@@ -169,9 +172,13 @@ sprint estudo {
     description: "Realizar estudos sobre autorizacao"
     startDate: 2024-11-20
     endDate: 2024-11-30
+    startDate: 2024-11-20
+    endDate: 2024-11-30
     status: IN_PROGRESS
 
     sprintbacklog estudo {
+        item Spike.epic1.story1.estudar {assignee: blackops.joaomarcos  dueDate: 2024-11-30 status: TODO}
+        item Spike.epic1.story2.estudar {assignee: blackops.joaomarcos  dueDate: 2024-11-30 status: TODO}
         item Spike.epic1.story1.estudar {assignee: blackops.joaomarcos  dueDate: 2024-11-30 status: TODO}
         item Spike.epic1.story2.estudar {assignee: blackops.joaomarcos  dueDate: 2024-11-30 status: TODO}
         
@@ -184,10 +191,14 @@ sprint apresentar {
     description: "Apresentar estudos sobre OPA e openFGA"
     startDate: 2024-11-20
     endDate: 2024-11-30
+    startDate: 2024-11-20
+    endDate: 2024-11-30
     status: PLANNED
 
     sprintbacklog estudo {
         
+        item Spike.epic1.story2.apresentar {assignee: blackops.joaomarcos dueDate: 2024-11-30 status: TODO}         
+        item Spike.epic1.story1.apresentar {assignee: blackops.joaomarcos dueDate: 2024-11-30 status: TODO}         
         item Spike.epic1.story2.apresentar {assignee: blackops.joaomarcos dueDate: 2024-11-30 status: TODO}         
         item Spike.epic1.story1.apresentar {assignee: blackops.joaomarcos dueDate: 2024-11-30 status: TODO}         
     }
