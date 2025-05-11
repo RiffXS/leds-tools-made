@@ -2,9 +2,9 @@
 import { AtomicUserStory, Epic, isTimeBox, Model, PlanningItem, TaskBacklog } from "../../../language/generated/ast.js";
 import { AbstractApplication } from "./AbstractApplication.js";
 
-import {SprintItem, /*TimeBox,*/ Person, Issue} from "made-report-lib-test";
+import { SprintItem, Person, Issue } from "made-report-lib-test";
 
-import {TimeBoxBuilder} from './builders/TimeBoxBuilder.js';
+import { TimeBoxBuilder } from './builders/TimeBoxBuilder.js';
 
 export class TimeBoxApplication extends AbstractApplication {
 
@@ -20,16 +20,16 @@ export class TimeBoxApplication extends AbstractApplication {
 
         sprints.map(async sprint => {
 
-            const sprintItems = (await Promise.all(sprint.sprintBacklog?.planningItems.flatMap(item => this.createTask(item)) as unknown as SprintItem[])).flatMap(item => item)
+            const sprintItems = (await Promise.all(sprint.sprintBacklog[0]?.planningItems.flatMap(item => this.createTask(item)) as unknown as SprintItem[])).flatMap(item => item)
 
 
         const instance = new TimeBoxBuilder()
             .setId(sprint.id)
-            .setName(sprint.name ?? "")
-            .setDescription(sprint.description ?? "")
-            .setStartDate(sprint.startDate ?? "")
-            .setEndDate(sprint.endDate ?? "")
-            .setStatus(sprint.status ?? "PLANNED")
+            .setName(sprint.name[0] ?? "")
+            .setDescription(sprint.description[0] ?? "")
+            .setStartDate(sprint.startDate[0] ?? "")
+            .setEndDate(sprint.endDate[0] ?? "")
+            .setStatus(sprint.status[0] ?? "PLANNED")
             .setSprintItems(sprintItems)
             .build()
         
@@ -66,23 +66,23 @@ export class TimeBoxApplication extends AbstractApplication {
 
                 id: key ?? "",
                 assignee: {
-                    id: item.assignee?.ref?.id,
-                    name: item.assignee?.ref?.name,
-                    email: item.assignee?.ref?.email
+                    id: item.assignee[0]?.ref?.id,
+                    name: item.assignee[0]?.ref?.name[0],
+                    email: item.assignee[0]?.ref?.email[0],
                 } as Person,
                 issue: {
                     id: key ?? "",
-                    title: task.name ?? "",
-                    description: task.description ?? "",
+                    title: task.name[0] ?? "",
+                    description: task.description[0] ?? "",
                     type: task.$type.toLocaleLowerCase() ?? "",
                     depends: await this.createDependece(task)
 
                 },
 
-                startDate: item.startDate,
-                dueDate: item.dueDate,
+                startDate: item.startDate[0],
+                dueDate: item.dueDate[0],
                 // completedDate: item.completedDate,
-                status:item.status ?? "TODO"
+                status:item.status[0] ?? "TODO"
     
             })
         })

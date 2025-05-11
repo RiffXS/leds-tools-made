@@ -17,11 +17,11 @@ export  class ProjectApplication extends AbstractApplication {
 
         const instance = new ProjectBuilder()
             .setId(project.id.toLocaleLowerCase()?? "")
-            .setName(project.name ?? "")
-            .setDescription(project.description ?? "" )
-            .setStartDate(project.startDate ?? "")
-            .setDueDate(project.dueDate ?? "")
-            .setCompletedDate(project.completedDate ?? "")
+            .setName(project.name[0] ?? "")
+            .setDescription(project.description[0] ?? "" )
+            .setStartDate(project.startDate[0] ?? "")
+            .setDueDate(project.dueDate[0] ?? "")
+            .setCompletedDate(project.completedDate[0] ?? "")
             .build()
             
         await this.saveorUpdate(instance)

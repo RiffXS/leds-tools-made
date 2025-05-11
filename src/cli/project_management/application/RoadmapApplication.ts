@@ -18,34 +18,34 @@ export class RoadmapApplication extends AbstractApplication {
        await Promise.all(roadmaps.map(async roadmap => {
         const instance: Roadmap = {
             id: roadmap.id,
-            name: roadmap.name ?? "",
-            description: roadmap.description ?? "",
+            name: roadmap.name[0] ?? "",
+            description: roadmap.description[0] ?? "",
             milestones: await Promise.all(
                 (roadmap.milestones ?? []).map(async milestone => ({
                     id: milestone.id,
-                    name: milestone.name,
-                    description: milestone.description,
-                    startDate: milestone.startDate,
-                    dueDate: milestone.dueDate,
-                    status: milestone.status,
+                    name: milestone.name[0],
+                    description: milestone.description[0],
+                    startDate: milestone.startDate[0],
+                    dueDate: milestone.dueDate[0],
+                    status: milestone.status[0],
                     releases: await Promise.all(
                         (milestone.releases ?? []).map(async release => {
                             // Processa os issues primeiro
-                            const issues = release.item
-                                ? [await this.createIssue("", release.item.ref)]
+                            const issues = release.itens[0]
+                                ? [await this.createIssue("", release.itens[0].ref)]
                                 : await this.createIssues([
                                     ...(release.itens ?? []),
-                                    release.item
+                                    release.itens[0]
                                 ].filter(Boolean));
 
                             return {
                                 id: release.id,
-                                version: release.version ?? "",
-                                name: release.name ?? "",
-                                description: release.description ?? "",
-                                dueDate: release.dueDate,
-                                releasedDate: release.releasedDate,
-                                status: release.status ?? 'PLANNED',
+                                version: release.version[0] ?? "",
+                                name: release.name[0] ?? "",
+                                description: release.description[0] ?? "",
+                                dueDate: release.dueDate[0],
+                                releasedDate: release.releasedDate[0],
+                                status: release.status[0] ?? 'PLANNED',
                                 issues
                             } as Release;
                         })

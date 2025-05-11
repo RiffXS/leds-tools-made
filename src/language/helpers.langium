@@ -9,24 +9,24 @@ QualifiedNameWithWildcard returns string:
 ;
 
 fragment Email:
-    'email' ':' email=STRING
+    'email' ':' email+=STRING
 ;
 
 fragment Discord:
-    'discord' ':' email=STRING
+    'discord' ':' email+=STRING
 ;
 
 
 fragment Description:
-    'description' ':' description=STRING
+    'description' ':' description+=STRING
 ;
 
 fragment Label:
-    'label' ':' label=ID (',' labelx+=ID)*
+    'label' ':' label+=ID (',' label+=ID)*
 ;
 
 fragment Name:
-    'name' ':' name=STRING
+    'name' ':' name+=STRING
 ;
 
 fragment Identification:
@@ -34,33 +34,33 @@ fragment Identification:
 ;
 
 fragment FullName: 
-    'fullName' ':' fullName = STRING
+    'fullName' ':' fullName+=STRING
 ;
 
 fragment DefinitionDone:
-    'definition_done' ':' dod=STRING (',' dod+=STRING)*
+    'definition_done' ':' dod+=STRING (',' dod+=STRING)*
 ;
 
 fragment DefinitionReady:
-    'definition_ready' ':' dor=STRING (',' dor+=STRING)*
+    'definition_ready' ':' dor+=STRING (',' dor+=STRING)*
 ;
 
 fragment Learning:
-    'learning'':'  value=STRING (',' value+=STRING)*
+    'learning'':'  value+=STRING (',' value+=STRING)*
 ;
 
 fragment StartDate:
-'startDate' ':' startDate=DATE 
+    'startDate' ':' startDate+=DATE 
 ;
 
 fragment EndDate:
-    'endDate' ':' endDate=DATE 
+    'endDate' ':' endDate+=DATE 
 ;
 
 fragment DueDate:
-    'dueDate' ':' dueDate=DATE
+    'dueDate' ':' dueDate+=DATE
 ;
 
 fragment CompletedDate:
-    'completedDate' ':' completedDate=DATE
+    'completedDate' ':' completedDate+=DATE
 ;

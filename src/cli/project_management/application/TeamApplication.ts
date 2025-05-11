@@ -20,12 +20,12 @@ export class TeamApplication extends AbstractApplication {
 
             const instance = new TeamBuilder()
                 .setId(team.id)
-                .setName(team.name ?? "")
-                .setDescription(team.description ?? "")
+                .setName(team.name[0] ?? "")
+                .setDescription(team.description[0] ?? "")
                 .setTeamMembers(team.teammember?.map(teammember => ({
                     id: teammember.id ?? "",
-                    name: teammember.name ?? "",
-                    email: teammember.email ?? "",
+                    name: teammember.name[0] ?? "",
+                    email: teammember.email[0] ?? "",
                   } as Person)) ?? [])
                 .build()
 

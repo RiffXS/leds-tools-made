@@ -21,8 +21,8 @@ export  class BacklogApplication extends AbstractApplication {
 
         const instance = new BacklogBuilder()
           .setId(backlog.id)
-          .setName(backlog.name ?? "")
-          .setDescription(backlog.description ?? "")
+          .setName(backlog.name[0] ?? "")
+          .setDescription(backlog.description[0] ?? "")
           .setIssues(issues)
           .build()
 

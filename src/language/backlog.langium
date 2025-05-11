@@ -18,20 +18,19 @@ Epic :
         (Name 
         |Description
         |Label 
-        |userstories +=AtomicUserStory
-        |'process' ':' process=[Process:QualifiedName]
-        |'depends' ':' depend=[backlogItem:QualifiedName] (',' depends+=[backlogItem:QualifiedName])?
+        |userstories += AtomicUserStory
+        |'process' ':' process+=[Process:QualifiedName]
+        |'depends' ':' depends+=[backlogItem:QualifiedName] (',' depends+=[backlogItem:QualifiedName])?
         )*
-       
     '}'
 ;
 
-AtomicUserStory :
+AtomicUserStory:
     'story' id=ID '{' 
         (Name 
         |Description
         |Label        
-        |'depends' ':' depend=[backlogItem:QualifiedName] (',' depends+=[backlogItem:QualifiedName])?
+        |'depends' ':' depends+=[backlogItem:QualifiedName] (',' depends+=[backlogItem:QualifiedName])?
         |'activity' ':' activity+=[Activity:QualifiedName]
         |tasks +=TaskBacklog
         )*
@@ -43,7 +42,7 @@ TaskBacklog:
         (Name 
         |Description
         |Label
-        |'depends' ':' depend=[backlogItem:QualifiedName] (',' depends+=[backlogItem:QualifiedName])?        
-        |'task' ':' task=[Task:QualifiedName])* 
+        |'depends' ':' depends+=[backlogItem:QualifiedName] (',' depends+=[backlogItem:QualifiedName])?        
+        |'task' ':' task+=[Task:QualifiedName])* 
        '}'
 ;

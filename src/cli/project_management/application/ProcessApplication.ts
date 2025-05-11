@@ -31,8 +31,8 @@ export  class ProcessApplication extends AbstractApplication {
        
         return {
             id : process.id,
-            name: process.name  ?? "",
-            description: process.description ?? "", 
+            name: process.name[0] ?? "",
+            description: process.description[0] ?? "", 
        
             activities:  await Promise.all(process.activities.map(async activity => await this.createActivity(activity)) ?? [])
          }
@@ -42,8 +42,8 @@ export  class ProcessApplication extends AbstractApplication {
 
         return {
             id: activity.id ?? "",  
-            name: activity.name ?? "",
-            description: activity.description ?? "",             
+            name: activity.name[0] ?? "",
+            description: activity.description[0] ?? "",             
             tasks:  await Promise.all(activity.tasks.map (async task => await this.createTask(task)) ?? []) 
             //depends: await Promise.all(activity.depend)
         }
@@ -54,8 +54,8 @@ export  class ProcessApplication extends AbstractApplication {
     private async createTask (task: Task): Promise<TaskData>{
         return {
             id: task.id ?? "",  
-            name: task.name ?? "" ,
-            description: task.description ?? "" 
+            name: task.name[0] ?? "" ,
+            description: task.description[0] ?? "" 
         }
     }
   

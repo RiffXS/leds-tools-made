@@ -19,8 +19,8 @@ Milestone:
             |DueDate
             |StartDate
             |CompletedDate
-            | 'status' ':'status =  ('PLANNED' | 'IN_PROGRESS' | 'COMPLETED' | 'DELAYED')
-            |'depends' ':' depend=[Milestone:QualifiedName] (',' depends+=[Milestone:QualifiedName])?
+            | 'status' ':'status+=('PLANNED' | 'IN_PROGRESS' | 'COMPLETED' | 'DELAYED')
+            |'depends' ':' depends+=[Milestone:QualifiedName] (',' depends+=[Milestone:QualifiedName])?
             |releases+=Release
             )*
     '}'
@@ -31,11 +31,11 @@ Release:
         (
          Name 
         | Description
-        | 'version' ':' version=STRING 
+        | 'version' ':' version+=STRING 
         | DueDate
-        | 'status' ':'status =  ('PLANNED' | 'IN_DEVELOPMENT' | 'TESTING' | 'RELEASED')
-        | 'releasedDate' ':' releasedDate=DATE 
-        |'item' ':' item=[backlogItem:QualifiedName] (',' itens+=[backlogItem:QualifiedName])?
+        | 'status' ':'status+=('PLANNED' | 'IN_DEVELOPMENT' | 'TESTING' | 'RELEASED')
+        | 'releasedDate' ':' releasedDate+=DATE 
+        |'item' ':' itens+=[backlogItem:QualifiedName] (',' itens+=[backlogItem:QualifiedName])?
         )*
     '}'    
 ;

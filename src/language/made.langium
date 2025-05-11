@@ -12,5 +12,4 @@ import 'roadmap'
 entry Model:    
     (project=Project)
     (components+=(Team|Process|Backlog|TimeBox|Roadmap))*
-
 ;
