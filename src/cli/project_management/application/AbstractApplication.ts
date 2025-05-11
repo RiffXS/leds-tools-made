@@ -6,7 +6,7 @@ import lodash from 'lodash'
 import { LowSync } from 'lowdb';
 import { JSONFileSync  } from 'lowdb/node';
 import { Mutex } from 'async-mutex';
-import {IssuesDTO,Issue} from "made-report-lib";
+import {IssuesDTO,Issue} from "made-report-lib-test";
 import { Model } from '../../../language/generated/ast.js';
 
 const mutex = new Mutex();
@@ -27,12 +27,10 @@ export abstract class AbstractApplication {
         this.items = new Map<string, any>();
   }
 
- 
-
-protected async addItem (value:any){
-  const id = value.id.toLocaleLowerCase()
-  this.items.set(id, value)
-}
+  protected async addItem (value:any){
+    const id = value.id.toLocaleLowerCase()
+    this.items.set(id, value)
+  }
 
   protected async _idExists(id:string){
     

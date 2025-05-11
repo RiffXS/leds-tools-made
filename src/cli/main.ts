@@ -18,8 +18,8 @@ import { NodeFileSystem } from 'langium/node';
 export const generateAction = async (fileName: string, opts: GenerateOptions): Promise<void> => {
     const services = createMadeServices(NodeFileSystem).Made;
     const model = await extractAstNode<Model>(fileName, services);
-    generate(model, fileName, opts.destination,opts);
-  
+    generate(model, fileName, opts.destination, opts);
+
 };
 
 export type GenerateOptions = {
@@ -33,9 +33,7 @@ export type GenerateOptions = {
 export default function(): void {
     const program = new Command();
 
-    program
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        .version(require('../../package.json').version);
+    // program.version(require('../../package.json').version);
 
 
     const fileExtensions = MadeLanguageMetaData.fileExtensions.join(', ');

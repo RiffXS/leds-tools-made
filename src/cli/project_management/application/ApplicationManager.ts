@@ -1,12 +1,12 @@
 import * as vscode from 'vscode';
-import {  Model } from "../../../language/generated/ast.js"
+import { Model } from "../../../language/generated/ast.js"
 
 import { BacklogApplication } from "./BacklogApplication.js";
 import { IssueApplication } from "./IssueApplication.js";
 import { TeamApplication } from "./TeamApplication.js";
 import { TimeBoxApplication } from "./TimeBoxApplication.js";
 
-import { ReportManager }  from  "made-report-lib";
+import { ReportManager } from "made-report-lib-test";
 import { RoadmapApplication } from './RoadmapApplication.js';
 import { ProcessApplication } from './ProcessApplication.js';
 import { ProjectApplication } from './ProjectApplication.js';
@@ -92,7 +92,7 @@ export class ApplicationManager {
                 description: 'Setting up sprint planning system',
                 startEmoji: '⏱️',
                 successEmoji: '🎯'
-            },            
+            },
             {
                 name: 'MADE Process',
                 action: async () => await this.processApplication.create(),
@@ -114,7 +114,7 @@ export class ApplicationManager {
                 name: 'MADE Documentation',
                 action: async () => {
                     // Gera documentação para o processo
-                    await  this.reportManager.createReport(this.target_folder)
+                    await this.reportManager.createReport(this.target_folder)
                 },
                 description: 'Generating agile process documentation',
                 startEmoji: '📚',
@@ -145,7 +145,7 @@ export class ApplicationManager {
         const filledWidth = Math.floor(totalWidth * (percentage / 100));
         const emptyWidth = totalWidth - filledWidth;
         const progressBar = '█'.repeat(filledWidth) + '░'.repeat(emptyWidth);
-        
+
         this.statusBarItem.text = `${emoji} MADE: ${message} [${progressBar}] ${percentage.toFixed(0)}%`;
         this.statusBarItem.show();
     }
@@ -188,7 +188,7 @@ export class ApplicationManager {
                         });
 
                         await step.action();
-                        
+
                         // Update progress
                         currentProgress += incrementValue;
                         this.updateStatusBar(
@@ -206,7 +206,7 @@ export class ApplicationManager {
                         '🎉'
                     );
                     vscode.window.showInformationMessage('🚀 MADE is ready for the daily standup! Let\'s rock this sprint! 💪');
-                    
+
                     setTimeout(() => {
                         this.statusBarItem.hide();
                     }, 2000);
